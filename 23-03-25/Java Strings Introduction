@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class StringOperations {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Read the two strings
+        String s = scanner.nextLine();
+        String t = scanner.nextLine();
+        scanner.close();
+        
+        // 1. Sum of the lengths
+        int sumLengths = s.length() + t.length();
+        System.out.println(sumLengths);
+        
+        // 2. Lexicographical comparison
+        if(s.compareTo(t) > 0) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+        
+        // 3. Capitalize the first letter of each string and print them
+        String capS = s.substring(0, 1).toUpperCase() + s.substring(1);
+        String capT = t.substring(0, 1).toUpperCase() + t.substring(1);
+        System.out.println(capS + " " + capT);
+    }
+}
