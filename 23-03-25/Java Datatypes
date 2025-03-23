@@ -1,0 +1,56 @@
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class DataTypesFitting {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt(); // number of test cases
+
+        // Process each test case.
+        for (int i = 0; i < t; i++) {
+            String input = scanner.next(); // read the number as a String
+            try {
+                BigInteger n = new BigInteger(input);
+                StringBuilder sb = new StringBuilder();
+                boolean canFit = false;
+
+                // Check if it fits in byte
+                if (n.compareTo(BigInteger.valueOf(Byte.MIN_VALUE)) >= 0 &&
+                    n.compareTo(BigInteger.valueOf(Byte.MAX_VALUE)) <= 0) {
+                    sb.append("* byte\n");
+                    canFit = true;
+                }
+                // Check if it fits in short
+                if (n.compareTo(BigInteger.valueOf(Short.MIN_VALUE)) >= 0 &&
+                    n.compareTo(BigInteger.valueOf(Short.MAX_VALUE)) <= 0) {
+                    sb.append("* short\n");
+                    canFit = true;
+                }
+                // Check if it fits in int
+                if (n.compareTo(BigInteger.valueOf(Integer.MIN_VALUE)) >= 0 &&
+                    n.compareTo(BigInteger.valueOf(Integer.MAX_VALUE)) <= 0) {
+                    sb.append("* int\n");
+                    canFit = true;
+                }
+                // Check if it fits in long
+                if (n.compareTo(BigInteger.valueOf(Long.MIN_VALUE)) >= 0 &&
+                    n.compareTo(BigInteger.valueOf(Long.MAX_VALUE)) <= 0) {
+                    sb.append("* long\n");
+                    canFit = true;
+                }
+                
+                // Print results based on the fits flag.
+                if (canFit) {
+                    System.out.println(input + " can be fitted in:");
+                    System.out.print(sb.toString());
+                } else {
+                    System.out.println(input + " can't be fitted anywhere.");
+                }
+            } catch(Exception e) {
+                // In case of an exception, the number can't be stored in any primitive.
+                System.out.println(input + " can't be fitted anywhere.");
+            }
+        }
+        scanner.close();
+    }
+}
